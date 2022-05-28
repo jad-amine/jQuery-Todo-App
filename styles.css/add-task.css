@@ -8,18 +8,17 @@
 
 .container{
    display: flex;
+   height: 100vh;
 }
 
 .navigation{
    padding: 2%;
    background-color: rgb(255, 255, 255);
-   height: 100vh;
    flex-basis: 25%;
 }
 
 
 .todo{
-   height: 100vh;
    background-color: rgb(180, 233, 208);
    flex-basis: 75%;
 }
@@ -29,11 +28,8 @@ h1{
    color: rgb(115, 215, 169);
 }
 
-.buttons{
-   margin-top: 10vh;
-}
-
 .nav-button{
+   display: block;
    font-weight: bolder;
    margin: 1vh auto;
    width: 100%;
@@ -45,6 +41,8 @@ h1{
    font-size: 25px;
    border-radius: 5px;
    text-align: start;
+   margin-top: 5vh;
+   text-decoration: none;
 }
 
 .nav-button:hover{
@@ -52,7 +50,7 @@ h1{
 }
 
 hr{
-   margin: 5vh auto;
+   margin: 10vh auto;
    border: 2px solid rgb(180, 233, 208);
 }
 
@@ -64,29 +62,4 @@ hr{
 .todo h1{
    color: rgb(255, 255, 255);
    font-size: 50px;
-}
-
-.todo h2{
-   color: rgb(25, 113, 25);
-}
-
-.tasks{
-   padding: 30px 30px;
-}
-
-.tasks div{
-   background-color: white;
-   margin-top: 3vh;
-   height: 50px;
-   border-radius: 10px;
-   padding-left: 10px;
-}
-
-.tasks p{
-   line-height: 50px;
-}
-
-.tasks input{
-   height: 25px;
-   width: 25px;
 }

@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <title>Todo-App</title>
-   <link rel="stylesheet" href="./styles.css/style.css">
+   <link rel="stylesheet" href="./styles.css/index.css">
 </head>
 <body>
-   <div class="container">
+   <div class="container" >
       <div class="navigation">
          <h1>My Todo App</h1>
          <div class="buttons">
-            <button class="nav-button">Today</button>
-            <button class="nav-button">Important</button>
-            <button class="nav-button">Tasks
+            <button class="nav-button">Important</a>
+            <button class="nav-button">Tasks</a>
+            <button class="nav-button">Add Task</a>
             <hr>
          </div>
       </div>
       <div class="todo">
-         <div class="container-2">
-            <h1>My Day</h1>
-            <div class="tasks">
+         <h1>To Do</h1>
+         <button id="show-template">Add Task</button>
+         <div id="task-section">
+            <fieldset>
+               <legend>To Do</legend>
+               <div class="field">
+                  <label>Title:</label>
+                  <textarea name="title" id="title" cols="30" rows="5"></textarea>
+               </div>
+               <div class="field">
+                  <label>Description:</label>
+                  <textarea name="description" id="description" cols="30" rows="5"></textarea>
+               </div>
+               <div class="last-field">
+                  <label>Importance:</label>
+                  <select name="importance" id="importance">Importance
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                     <option value="4">4</option>
+                     <option value="5">5</option>
+                  </select>
+               </div>
+            </fieldset>
+         </div>
+
+         <div id="container-2">
+            <div class="all_tasks">
                <h2>Work</h2>
-               <div><p><input type="radio">Charbel Assignment</p></div>
-               <div><p><input type="radio">Clean The Room</p></div>
-               <div><p><input type="radio"></p></div>
-               <div><p><input type="radio"></p></div>
+               <div class="task"><input type="radio">Charbel Assignment</div>
             </div>
          </div>
       </div>
    </div>
+   <script src="./app.js"></script>
 </body>
 </html>
