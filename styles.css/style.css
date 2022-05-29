@@ -131,6 +131,20 @@ select{
    border-radius: 15px;
 }
 
+#add-task{
+   margin-left: 20px;
+   width: 15%;
+   height: 10vh;
+   border-radius: 15px;
+   border: 0px;
+   font-size: 20px;
+   background-color: rgb(37, 162, 39);
+}
+
+#add-task:hover{
+   background-color: rgb(54, 209, 56);
+}
+
 /* Tasks todo Section */
 .tasks{
    padding: 30px 30px;
@@ -140,7 +154,7 @@ select{
    color: rgb(25, 113, 25);
 }
 
-.all_tasks div{
+#all_tasks div{
    background-color: white;
    margin-top: 3vh;
    height: 50px;
@@ -148,7 +162,7 @@ select{
    padding-left: 10px;
 }
 
-.all_tasks input{
+#all_tasks input{
    height: 25px;
    width: 25px;
    margin-right: 20px;
