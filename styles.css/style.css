@@ -79,11 +79,11 @@ hr{
 }
 
 #task-section{
+   display: none;
    margin-top: 10vh;
    color: white;
    font-size: 30px;
    font-weight: bold;
-   display: none;
 }
 
 textarea{
