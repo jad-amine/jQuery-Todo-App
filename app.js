@@ -23,9 +23,21 @@ function push_to_localstorage(){
    let description_value = description.val();
    let importance_value = importance.val();
    let isDone = false;
-   let time = new Date();
+   let time = new Date().toUTCString();
    let task = JSON.stringify({'name': title_value,'description': description_value,'importance': importance_value,'status': isDone,'time': time});
    var id = localStorage.length +1 ;
    localStorage.setItem(id,task);
+   
 }
 
+// Show tasks by date
+for (let i = 1; i <= localStorage.length; i++){
+   let task = localStorage.getItem(i);
+   console.log(task);
+   task = JSON.parse(task);
+   console.log(task);
+   let html = `<div class="task"><input type="radio" class = status"><h3>${task.name}</h3>: ${task.description}, ${task.importance}, ${task.time}</div>`;
+   all_tasks.append(html);
+}
+
+// Delete Tasks 
