@@ -4,6 +4,7 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <title>Todo-App</title>
    <link rel="stylesheet" href="./styles.css/style.css">
+   <script src="https://kit.fontawesome.com/9d1b4ceae1.js" crossorigin="anonymous"></script>
 </head>
 <body>
    <div class="container" >
@@ -12,9 +13,8 @@
       <div class="navigation">
          <h1>My Todo App</h1>
          <div class="buttons">
-            <button class="nav-button">Important</a>
-            <button class="nav-button">Tasks</a>
-            <button class="nav-button">Add Task</a>
+            <button class="nav-button" id="by_importance">Important</a>
+            <button class="nav-button" id="by_task">Tasks</a>
             <hr>
          </div>
       </div>
@@ -50,7 +50,6 @@
          <!-- Section to show tasks -->
          <div id="container-2">
             <div id="all_tasks">
-               <h2>Work</h2>
                <!-- Tasks will be populated here from the localstorage -->
             </div>
          </div>
