@@ -70,7 +70,7 @@ function display_tasks(array){
         `${a}
           <h3>${task.name}:</h3>
           <p class="description"> ${task.description}, <span>${task.importance}</span> ${task.time}</p> 
-          <i data-id='${task.id}' class="done fas fa-check"'></i><i data-id='${task.id}' class="trash fas fa-trash"></i>
+          <i class="fa-solid fa-pen"></i><i data-id='${task.id}' class="done fas fa-check"'></i><i data-id='${task.id}' class="trash fas fa-trash"></i>
         </div>`;
     all_tasks.append(html);
         // ================================== revieww sectionnnnnn ==================================
@@ -97,6 +97,12 @@ function display_tasks(array){
     }
     localStorage.setItem(id, JSON.stringify(updated_task));
     location.reload();
+  });
+
+  $('.task .fa-solid').click((e)=> {
+    console.log(e.currentTarget);
+    a = e.currentTarget
+    console.log(a.parent());
   });
 }
 
@@ -151,6 +157,9 @@ search_text.addEventListener("input", (e)=>{
       parent.fadeIn();
     }
   })
-  
 })
+
+
+
+
 

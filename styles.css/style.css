@@ -194,16 +194,22 @@ span{
 
 .fa-trash{
    position: absolute;
-   right: 40px;
+   right: 8px;
    color: red;
    cursor: pointer;
 }
 
 .fa-check{
    position: absolute;
-   right: 5px;
+   right: 40px;
    color: rgb(60, 207, 15);
    cursor: pointer;
+}
+
+.fa-solid{
+   position: absolute;
+   cursor: pointer;
+   right: 75px;
 }
 
 .description{
@@ -221,7 +227,7 @@ span{
    display: none;
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 1000px){
    .task{
       flex-direction: column;
       align-items: flex-start;
