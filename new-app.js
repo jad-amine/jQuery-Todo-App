@@ -42,7 +42,7 @@ function push_to_localstorage(){
   let importance_value = importance.val();
   let isDone = false;
   let time = new Date().toUTCString();
-  var id = Math.floor(Math.random()*1000000);
+  var id = Math.floor(Math.random()*10000000);
   let task = JSON.stringify({'id': id, 'name': title_value,'description': description_value,
                             'importance': importance_value,'isDone': isDone,'time': time});
   localStorage.setItem(id, task);
@@ -70,19 +70,19 @@ function display_tasks(array){
         `${a}
           <h3>${task.name}:</h3>
           <p class="description"> ${task.description}, <span>${task.importance}</span> ${task.time}</p> 
-          <i class="fa-solid fa-pen"></i><i data-id='${task.id}' class="done fas fa-check"'></i><i data-id='${task.id}' class="trash fas fa-trash"></i>
-        </div>`;
+          <i data-id='${task.id}' class="fa-solid fa-pen"></i><i data-id='${task.id}' class="done fas fa-check"'></i><i data-id='${task.id}' class="trash fas fa-trash"></i>
+        </div>
+        <div class="shown-div hidden-div" data-id='0'><input class='hidden-text' type="textarea" placeholder="change title"><input class='hidden-text' type="textarea" placeholder="change description"></div>`;
     all_tasks.append(html);
         // ================================== revieww sectionnnnnn ==================================
   })
 
     // When the user click on delete task icon
   $('.task .trash').click((e)=> {
-    console.log(e.currentTarget);
     let clicked = e.currentTarget;
     let id = clicked.getAttribute("data-id");
     $(`#${id}`).fadeOut('slow', 'swing');
-    localStorage.removeItem(id);
+    // localStorage.removeItem(id);
   });
   
   // When the user click on task Done icon
@@ -99,10 +99,23 @@ function display_tasks(array){
     location.reload();
   });
 
+  //Update Task
   $('.task .fa-solid').click((e)=> {
-    console.log(e.currentTarget);
-    a = e.currentTarget
-    console.log(a.parent());
+    let clicked = e.currentTarget;
+    console.log(clicked.getAttribute('data-id'))
+    id = clicked.getAttribute('data-id');
+    let child = $(`#${id} + div`);
+    let hidden = child[0].getAttribute('data-id');
+    if(hidden == 0){
+      child.fadeIn();
+      child.toggleClass('hidden-div')
+      // console.log(container)
+      console.log(child)
+      child.attr('data-id', '1');
+    } else{
+      child.fadeOut();
+      child.attr('data-id', '0');
+    }
   });
 }
 
