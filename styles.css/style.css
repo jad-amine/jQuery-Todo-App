@@ -56,7 +56,7 @@ hr{
    padding: 30px 30px ;
 }
 
-#search_tasks{
+#search-tasks{
    height: 30px;
    margin-left: 25px;
    padding-left: 10px;
@@ -215,6 +215,10 @@ span{
 #all_tasks .finished{
    background-color: rgb(165, 165, 165);
    text-decoration: line-through;
+}
+
+.hidden{
+   display: none;
 }
 
 @media only screen and (max-width: 800px){

@@ -7,13 +7,11 @@ const panel = $('#task-section');
 const all_tasks = $('#all_tasks');
 const importance = $('#importance');
 const description = $('#description');
-const search_tasks = $('#search_tasks')
+const search_tasks = $('#search-tasks')
 const by_importance = $('#by_importance');
 var tasks = [];
 var tasks_key = [];
 var id;
-var controler = 0;
-
 
 // Get localstorage tasks 
 for (let i=0; i<localStorage.length; i++){
@@ -21,7 +19,6 @@ for (let i=0; i<localStorage.length; i++){
   tasks_key.push(key);
   tasks.push(JSON.parse(localStorage.getItem(key)));
 };
-
 
 
 $(document).ready( ()=> {
@@ -50,12 +47,11 @@ function push_to_localstorage(){
                             'importance': importance_value,'isDone': isDone,'time': time});
   localStorage.setItem(id, task);
   location.reload()
-  // console.log(localStorage.getItem(id));
 };
 
 
 
-//Utilities
+//Function to populate tasks from localstorage
 function display_tasks(array){
   all_tasks[0].innerHTML = '';
   //check if empty
@@ -79,6 +75,8 @@ function display_tasks(array){
     all_tasks.append(html);
         // ================================== revieww sectionnnnnn ==================================
   })
+
+    // When the user click on delete task icon
   $('.task .trash').click((e)=> {
     console.log(e.currentTarget);
     let clicked = e.currentTarget;
@@ -86,7 +84,8 @@ function display_tasks(array){
     $(`#${id}`).fadeOut('slow', 'swing');
     localStorage.removeItem(id);
   });
-
+  
+  // When the user click on task Done icon
   $('.task .done').click((e)=> {
     let clicked = e.currentTarget;
     id = clicked.getAttribute('data-id');
@@ -101,7 +100,7 @@ function display_tasks(array){
   });
 }
 
-
+// Display tasks by order of importance
 by_importance.click(()=>{
   let order1 = [];
   let order2 = [];
@@ -130,6 +129,26 @@ by_importance.click(()=>{
   display_tasks(result)
 })
 
+// Show tasks by date of creation
 by_task.click(()=>{
   display_tasks(tasks);
 });
+
+
+//Search tasks functionality
+const search_text = search_tasks[0];
+search_text.addEventListener("input", (e)=>{
+  let search = e.currentTarget.value
+  search = search.toLowerCase()
+  tasks.forEach(task => {
+    let name = task.name.toLowerCase();
+    let description = task.description.toLowerCase();
+    var visible = name.includes(search) || description.includes(search);
+    if(!visible){
+      let parent = $(`#${task.id}`) 
+      parent.toggleClass("hidden");
+      
+    }
+  })
+  
+})
