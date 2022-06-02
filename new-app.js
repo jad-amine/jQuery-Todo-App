@@ -69,10 +69,16 @@ function display_tasks(array){
     let html = 
         `${a}
           <h3>${task.name}:</h3>
-          <p class="description"> ${task.description}, <span>${task.importance}</span> ${task.time}</p> 
+          <p class="description"> ${task.description} <span>${task.importance}</span> ${task.time}</p> 
           <i data-id='${task.id}' class="fa-solid fa-pen"></i><i data-id='${task.id}' class="done fas fa-check"'></i><i data-id='${task.id}' class="trash fas fa-trash"></i>
         </div>
-        <div class="shown-div hidden-div" data-id='0'><input class='hidden-text' type="textarea" placeholder="change title"><input class='hidden-text' type="textarea" placeholder="change description"></div>`;
+        <div class="hidden-div" data-id='0'>
+          <span>Title : </span> 
+          <input class='hidden-text' id='hidden-title' type="textarea" placeholder="change title">
+          <span>Description : </span>
+          <input class='hidden-text' id='hidden-description' type="textarea" placeholder="change description">
+          <input class="button" type="button" data-id='${task.id}' value='Update'>
+        </div>`;
     all_tasks.append(html);
         // ================================== revieww sectionnnnnn ==================================
   })
@@ -82,7 +88,7 @@ function display_tasks(array){
     let clicked = e.currentTarget;
     let id = clicked.getAttribute("data-id");
     $(`#${id}`).fadeOut('slow', 'swing');
-    // localStorage.removeItem(id);
+    localStorage.removeItem(id);
   });
   
   // When the user click on task Done icon
@@ -102,16 +108,33 @@ function display_tasks(array){
   //Update Task
   $('.task .fa-solid').click((e)=> {
     let clicked = e.currentTarget;
-    console.log(clicked.getAttribute('data-id'))
-    id = clicked.getAttribute('data-id');
+    let id = clicked.getAttribute('data-id');
     let child = $(`#${id} + div`);
+    let hidden_title = child.children('input#hidden-title')
+    let hidden_text = child.children('input#hidden-description')
+    let button = child.children('input.button')
     let hidden = child[0].getAttribute('data-id');
+    button.click(()=> {
+      if(hidden_title.val()==''){
+        alert('Please give your task a name')
+        return;
+      }else{
+        child.fadeOut();
+        let task = JSON.parse(localStorage.getItem(id))
+        task.name = hidden_title.val();
+        task.description = hidden_text.val();
+        task = JSON.stringify(task);
+        localStorage.setItem(id, task);
+        child.attr('data-id', '0');
+        setTimeout(() => {
+          location.reload();
+        },500 ); 
+      }
+    })
     if(hidden == 0){
       child.fadeIn();
-      child.toggleClass('hidden-div')
-      // console.log(container)
-      console.log(child)
       child.attr('data-id', '1');
+      child.css('display','flex')
     } else{
       child.fadeOut();
       child.attr('data-id', '0');

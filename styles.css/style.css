@@ -196,7 +196,7 @@ span{
 .fa-check{
    position: absolute;
    right: 40px;
-   color: rgb(60, 207, 15);
+   color: rgb(65, 228, 15);
    cursor: pointer;
 }
 
@@ -219,12 +219,19 @@ span{
 
 #all_tasks .hidden-div{
    display: none;
-}
-
-.shown-div{
-   display: flex;
    align-items: center;
    gap: 30px;
+   flex-wrap: wrap;
+}
+
+.button{
+   width: 100px;
+   height: 30px;
+   color: white;
+   background-color: rgb(33, 250, 0);
+   border: 0;
+   font-weight: bold;
+   border-radius: 10px;
 }
 
 .hidden-text{
@@ -237,5 +244,8 @@ span{
    .task{
       flex-direction: column;
       align-items: flex-start;
+   }
+   #all_tasks .hidden-div{
+      flex-direction: column;
    }
 }
