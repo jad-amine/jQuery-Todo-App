@@ -144,11 +144,13 @@ search_text.addEventListener("input", (e)=>{
     let name = task.name.toLowerCase();
     let description = task.description.toLowerCase();
     var visible = name.includes(search) || description.includes(search);
+    let parent = $(`#${task.id}`) 
     if(!visible){
-      let parent = $(`#${task.id}`) 
-      parent.toggleClass("hidden");
-      
+      parent.fadeOut();
+    }else{
+      parent.fadeIn();
     }
   })
   
 })
+
