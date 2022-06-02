@@ -7,6 +7,7 @@ const panel = $('#task-section');
 const all_tasks = $('#all_tasks');
 const importance = $('#importance');
 const description = $('#description');
+const search_tasks = $('#search_tasks')
 const by_importance = $('#by_importance');
 var tasks = [];
 var tasks_key = [];
@@ -63,7 +64,6 @@ function display_tasks(array){
   }
   // If not empty
   array.forEach(task => {
-    console.log(task.isDone);
     var a;
     if(task.isDone){
       a = `<div class='task finished' id='${task.id}'>`;
@@ -73,7 +73,7 @@ function display_tasks(array){
     let html = 
         `${a}
           <h3>${task.name}:</h3>
-          <p class="description"> ${task.description}, <span>${task.importance}</span>, ${task.time}</p> 
+          <p class="description"> ${task.description}, <span>${task.importance}</span> ${task.time}</p> 
           <i data-id='${task.id}' class="done fas fa-check"'></i><i data-id='${task.id}' class="trash fas fa-trash"></i>
         </div>`;
     all_tasks.append(html);
