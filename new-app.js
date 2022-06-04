@@ -71,7 +71,7 @@ function display_tasks(array){
     let html = 
         `${a}
           <h3>${task.name}:</h3>
-          <p class="description"> ${task.description} <span>${task.importance}</span> ${task.dueDate}</p> 
+          <p class="description"> ${task.description} <span>${task.importance}</span> ${task.createdAt}</p> 
           <i data-id='${task.id}' class="fa-solid fa-pen"></i><i data-id='${task.id}' class="done fas fa-check"'></i><i data-id='${task.id}' class="trash fas fa-trash"></i>
         </div>
         <div class="hidden-div" data-id='0'>
