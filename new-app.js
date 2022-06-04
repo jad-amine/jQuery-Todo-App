@@ -1,6 +1,7 @@
 // Declare variable and grab elements
 const title = $('#title');
 const by_task = $('#by_task');
+const due_date = $('#dueDate');
 const add_task = $('#add-task'); 
 const flip = $('#show-template');
 const panel = $('#task-section');
@@ -23,10 +24,10 @@ for (let i=0; i<localStorage.length; i++){
 
 $(document).ready( ()=> {
   display_tasks(tasks);
-   // Added slide animation to add task button click
+  // Added slide animation to add task button click
   flip.click( ()=> {
     panel.slideToggle("slow");
-    })
+  })
 });
 
 // Add task 
@@ -35,16 +36,17 @@ add_task.click(push_to_localstorage);
 function push_to_localstorage(){
   let title_value = title.val();
   if(title_value == ''){
-    alert('Please a give your task a title');
+    alert('Please give your task a title');
     return;
   }
+  let dueDate = due_date.val();
   let description_value = description.val();
   let importance_value = importance.val();
   let isDone = false;
-  let time = new Date().toUTCString();
+  let createdAt = new Date();
   var id = Math.floor(Math.random()*10000000);
   let task = JSON.stringify({'id': id, 'name': title_value,'description': description_value,
-                            'importance': importance_value,'isDone': isDone,'time': time});
+                            'importance': importance_value,'isDone': isDone,'dueDate': dueDate, 'createdAt': createdAt});
   localStorage.setItem(id, task);
   location.reload()
 };
@@ -69,7 +71,7 @@ function display_tasks(array){
     let html = 
         `${a}
           <h3>${task.name}:</h3>
-          <p class="description"> ${task.description} <span>${task.importance}</span> ${task.time}</p> 
+          <p class="description"> ${task.description} <span>${task.importance}</span> ${task.dueDate}</p> 
           <i data-id='${task.id}' class="fa-solid fa-pen"></i><i data-id='${task.id}' class="done fas fa-check"'></i><i data-id='${task.id}' class="trash fas fa-trash"></i>
         </div>
         <div class="hidden-div" data-id='0'>
@@ -90,7 +92,7 @@ function display_tasks(array){
     $(`#${id}`).fadeOut('slow', 'swing');
     localStorage.removeItem(id);
   });
-  
+
   // When the user click on task Done icon
   $('.task .done').click((e)=> {
     let clicked = e.currentTarget;
@@ -194,8 +196,3 @@ search_text.addEventListener("input", (e)=>{
     }
   })
 })
-
-
-
-
-

@@ -139,9 +139,20 @@ select{
    border-radius: 15px;
 }
 
+.last-field p{
+   margin-left: 20px;
+}
+
+#dueDate{
+   margin-left: 20px;
+   height: 40px;
+   border-radius: 10px;
+}
+
 #add-task{
    color: white;
-   margin-left: 20px;
+   margin-left: 50%;
+   margin-top: 50px;
    width: 15%;
    height: 10vh;
    border-radius: 15px;
